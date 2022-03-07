@@ -6,56 +6,40 @@ namespace Nelinurk
 {
     class Nelinurk
     {
-        string tüüp;
-        int status;
+        int tuup;
         double kõrgus;
+        int perimeeter;
+        int pindala;
         double laius;
         public Nelinurk() {}
-        public Nelinurk(double Kõrgus,double Laius)
+        public Nelinurk(int Kõrgus, int Laius)
         {
             kõrgus = Kõrgus;
             laius = Laius;
         }
-        public string Tüüp
+        public int number()
         {
-            get
+            for (int i = 0; i < 4; i++)
             {
-                if (kõrgus==laius || status!=90)
-                {
-                    tüüp = "Romb";
-                }
-                else if (kõrgus==laius || status == 90)
-                {
-                    tüüp = "Ruut";
-                }
-                else
-                {
-                    tüüp = "ristkülik";
-                }
-                return tüüp;
+                Console.Write($"Sisestage nurk {i + 1}: ");
+                tuup = int.Parse(Console.ReadLine());
             }
+            return tuup;
         }
-        public int Status
+        public int Pindala()
         {
-            get { return status; }
-            set { }
+            pindala = (int)(kõrgus * laius);
+            return pindala;
         }
-        public double Pindala()
+        public int Perimeeter()
         {
-            double S;
-            S = kõrgus * laius;
-            return Pindala;
-        }
-        public double Perimeeter()
-        {
-            double P;
-            P = (kõrgus + laius) * 2;
-            return Perimeeter;
+            perimeeter = (int)((kõrgus + laius) * 2);
+            return perimeeter;
         }
         public void Vastus()
         {
-            Console.WriteLine($"S = {Pindala}");
-            Console.WriteLine($"P = {Perimeeter}");
+            Console.WriteLine($"S = {pindala}");
+            Console.WriteLine($"P = {perimeeter}");
         }
     }
 }
