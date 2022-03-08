@@ -1,45 +1,107 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Nelinurk
 {
-    class Nelinurk
+    public class Nelinurk
     {
-        int tuup;
+
+        double pikk;
         double kõrgus;
-        int perimeeter;
-        int pindala;
         double laius;
-        public Nelinurk() {}
-        public Nelinurk(int Kõrgus, int Laius)
+        bool asd;
+        string status;
+        int[] tuup = new int[4];
+        private double a;
+        private double c;
+
+        public Nelinurk() { }
+        public Nelinurk(double Pikk, double Laius, double Kõrgus)
         {
-            kõrgus = Kõrgus;
+            pikk = Pikk;
             laius = Laius;
+            kõrgus = Kõrgus;
         }
-        public int number()
+
+        public Nelinurk(double a, double c)
         {
-            for (int i = 0; i < 4; i++)
+            this.a = a;
+            this.c = c;
+        }
+
+        public string Tuup
+        {
+            get
             {
-                Console.Write($"Sisestage nurk {i + 1}: ");
-                tuup = int.Parse(Console.ReadLine());
+                int asd1 = 0;
+                for (int i = 0; i < tuup.Length; i++)
+                {
+                    if (tuup[i] == 90)
+                    {
+                        asd1++;
+                    }
+                }
+                if (pikk == laius && kõrgus == 0)
+                {
+                    status = "Квадрат";
+                }
+                else if (pikk != laius && asd1 == 4)
+                {
+                    status = "Прямоугольник";
+                }
+                return status;
             }
-            return tuup;
+
         }
-        public int Pindala()
+        public bool figura1
         {
-            pindala = (int)(kõrgus * laius);
+            get
+            {
+                int summ = 0;
+                for (int i = 0; i < tuup.Length; i++)
+                {
+                    summ += tuup[i];
+
+                }
+                if (summ != 360)
+                {
+                    asd = true;
+                }
+                else
+                {
+                    asd = false;
+                }
+                return asd;
+            }
+
+        }
+        public double Pindala()
+        {
+            double pindala;
+            pindala = pikk * laius;
             return pindala;
         }
-        public int Perimeeter()
+        public double Ombermotot()
         {
-            perimeeter = (int)((kõrgus + laius) * 2);
-            return perimeeter;
+            double ombermotot;
+            ombermotot = (pikk + laius) * 2;
+            return ombermotot;
         }
         public void Vastus()
         {
-            Console.WriteLine($"S = {pindala}");
-            Console.WriteLine($"P = {perimeeter}");
+            if (asd == false)
+            {
+                Console.WriteLine($"Это {status}");
+                Console.WriteLine($"S = {Pindala()}\nP = {Ombermotot()}");
+            }
+            else
+            {
+                Console.WriteLine("[!] Такой фигуры не существует");
+            }
         }
     }
 }
+
